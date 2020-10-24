@@ -23,7 +23,7 @@ export default {
       return this.$route.path.indexOf(this.path) !== -1;
     },
     activeStyle() {
-      return this.isActive ? { color: "#ff5777" } : {};
+      return this.isActive ? { color: "var(--color-tint)" } : {};
     },
   },
   methods: {
@@ -43,7 +43,7 @@ export default {
 .item_icon_active img {
   width: 24px;
   height: 24px;
-  margin-top: 5px;
+  margin-top: 3px;
   vertical-align: middle;
 }
 .item-text {
