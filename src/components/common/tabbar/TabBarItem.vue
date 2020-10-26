@@ -34,21 +34,19 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .tab_bar_item {
   flex: 1;
+  text-align: center;
+  height: 49px;
   font-size: 14px;
 }
-.tab_bar_item img,
-.item_icon_active img {
+
+.tab_bar_item img {
   width: 24px;
   height: 24px;
   margin-top: 3px;
   vertical-align: middle;
-}
-.item-text {
-  font-size: 12px;
-  margin-top: 3px;
-  color: #333;
+  margin-bottom: 2px;
 }
 </style>

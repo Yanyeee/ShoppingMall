@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .recommend {
   display: flex;
   width: 100%;
@@ -32,11 +32,14 @@ export default {
   padding: 10px 0;
   border-bottom: 10px solid #eee;
 }
+
 .recommend_item {
   flex: 1;
 }
+
 .recommend_item img {
-  width: 90%;
-  margin-bottom: 10px;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 5px;
 }
 </style>
