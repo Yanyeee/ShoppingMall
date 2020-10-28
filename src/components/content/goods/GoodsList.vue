@@ -1,6 +1,6 @@
 <template>
   <div class="goods">
-    <GoodsListItem v-for="item in goods" :goodsItem="item" :key="item.label" />
+    <GoodsListItem v-for="item in goods" :product="item" :key="item.id" />
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
       default() {
         return [];
       },
+    },
+  },
+  methods: {
+    itemClick() {
+      this.$router.push("/detail");
     },
   },
 };

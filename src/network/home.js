@@ -1,6 +1,5 @@
 import {
-  request,
-  reuqest
+  request
 } from "./request"
 
 export function getHomeMultiData() {

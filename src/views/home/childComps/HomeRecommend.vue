@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-    <div v-for="item in recommends" class="recommend_item" :key="item.label">
+    <div v-for="item in recommends" class="recommend-item" :key="item.id">
       <a :href="item.link">
         <img :src="item.image" alt="" />
         <div>{{ item.title }}</div>
@@ -33,11 +33,11 @@ export default {
   border-bottom: 10px solid #eee;
 }
 
-.recommend_item {
+.recommend-item {
   flex: 1;
 }
 
-.recommend_item img {
+.recommend-item img {
   width: 70px;
   height: 70px;
   margin-bottom: 5px;

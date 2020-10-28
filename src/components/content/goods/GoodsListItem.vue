@@ -1,10 +1,10 @@
 <template>
-  <div class="goods_item">
-    <img :src="goodsItem.show.img" alt="" />
-    <div class="goods_info">
-      <p>{{ goodsItem.title }}</p>
-      <span class="item_price">￥{{ goodsItem.price }}</span>
-      <span class="item_collect">{{ goodsItem.cfav }}</span>
+  <div class="product-item" @click="itemClick">
+    <img v-lazy="showImage" alt="" @load="imageLoad" />
+    <div class="product-info">
+      <p>{{ product.title }}</p>
+      <span class="price">￥{{ product.price }}</span>
+      <span class="collect">{{ product.cfav }}</span>
     </div>
   </div>
 </template>
@@ -13,55 +13,73 @@
 export default {
   name: "GoodsListItem",
   props: {
-    goodsItem: {
+    product: {
       type: Object,
       default() {
-        return [];
+        return {};
       },
+    },
+  },
+  // created(){
+  //     console.log(this.product)
+  //   },
+  computed: {
+    //懒加载
+    showImage() {
+      return this.product.img || this.product.image || this.product.show.img;
+    },
+  },
+  methods: {
+    imageLoad() {
+      this.$bus.$emit("itemImageLoad");
+    },
+    //路由保存位置和商品id
+    itemClick() {
+      this.$router.push("/detail/" + this.product.iid);
     },
   },
 };
 </script>
 
 <style scoped>
-.goods_item {
+.product-item {
   padding-bottom: 40px;
   position: relative;
   width: 46%;
 }
 
-.goods_item img {
+.product-item img {
   width: 100%;
   border-radius: 5px;
 }
 
-.goods_info {
+.product-info {
   font-size: 12px;
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   left: 0;
   right: 0;
   overflow: hidden;
   text-align: center;
 }
 
-.goods_info p {
+.product-info p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 3px;
 }
 
-.goods_info .item_price {
+.product-info .price {
   color: var(--color-high-text);
   margin-right: 20px;
 }
 
-.goods_info .item_collect {
+.product-info .collect {
   position: relative;
 }
 
-.goods_info .item_collect::before {
+.product-info .collect::before {
   content: "";
   position: absolute;
   left: -15px;

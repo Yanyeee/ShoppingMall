@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 //2.创建路由对象 & 建立映射关系
 const routes = [{
     path: '',
-    redirect: './home'
+    redirect: '/home'
   },
   {
     path: '/home',
@@ -32,6 +32,15 @@ const router = new VueRouter({
   routes,
   mode: "history"
 })
+
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if (isChunkLoadFailed) {
+    router.replace(targetPath);
+  }
+});
 
 //3.导出
 export default router

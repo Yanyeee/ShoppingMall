@@ -1,13 +1,13 @@
 <template>
-  <div class="tab_bar_item" @click="itemClick">
-    <div class="item_icon" v-show="!isActive">
-      <slot name="item_icon"></slot>
+  <div class="tab-bar-item" @click="itemClick">
+    <div class="item-icon" v-show="!isActive">
+      <slot name="item-icon"></slot>
     </div>
-    <div class="item_icon_active" v-show="isActive">
-      <slot name="active_icon"></slot>
+    <div class="item-icon-active" v-show="isActive">
+      <slot name="active-icon"></slot>
     </div>
-    <div class="item_text" :style="activeStyle">
-      <slot name="item_text"></slot>
+    <div class="item-text" :style="activeStyle">
+      <slot name="item-text"></slot>
     </div>
   </div>
 </template>
@@ -35,14 +35,14 @@ export default {
 </script>
 
 <style scoped>
-.tab_bar_item {
+.tab-bar-item {
   flex: 1;
   text-align: center;
   height: 49px;
   font-size: 14px;
 }
 
-.tab_bar_item img {
+.tab-bar-item img {
   width: 24px;
   height: 24px;
   margin-top: 3px;
