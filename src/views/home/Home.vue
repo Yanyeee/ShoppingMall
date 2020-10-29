@@ -45,13 +45,16 @@ import HomeRecommend from "./childComps/HomeRecommend";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
-import BackTop from "components/content/backTop/BackTop";
+// import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultiData, getHomeGoods } from "network/home";
 import { debounce } from "common/utils";
+import { itemListenerMixin, backTopMixin } from "common/mixin";
+import { BACK_POSITION } from "common/const";
 
 export default {
   name: "Home",
+  mixins: [itemListenerMixin, backTopMixin],
   components: {
     NavBar,
     HomeSwiper,
@@ -59,7 +62,6 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
-    BackTop,
   },
   data() {
     return {
@@ -127,20 +129,21 @@ export default {
       this.$refs.tabControl2.currentIndex = index;
     },
 
+    //加载更多图片
+    loadMore() {
+      this.getHomeGoods(this.currentType);
+      this.$refs.scroll.refresh();
+    },
+
     contentScroll(position) {
       //BackTop是否显示
-      this.isShowBackTop = -position.y > 800;
+      this.listenShowBackTop(position);
       // tabControl是否吸顶
       this.isTabFixed = -position.y > this.tabOffsetTop;
     },
     //点击backTop回到页面头部
     backTop() {
       this.$refs.scroll.scrollTo(0, 0);
-    },
-    //加载更多图片
-    loadMore() {
-      this.getHomeGoods(this.currentType);
-      this.$refs.scroll.refresh();
     },
     swiperImageLoad() {
       // 获取tabControl的offsetTop
@@ -152,7 +155,7 @@ export default {
     //2.网络请求相关方法
     //获取并保存广告数据
     getHomeMultiData() {
-      getHomeMultiData().then(res => {
+      getHomeMultiData().then((res) => {
         this.result = res;
         this.banners = res.data.banner.list;
         this.recommends = res.data.recommend.list;
@@ -161,7 +164,7 @@ export default {
     //获取并保商品列表和数据
     getHomeGoods(type) {
       const page = this.goods[type].page + 1;
-      getHomeGoods(type, page).then(res => {
+      getHomeGoods(type, page).then((res) => {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
 
