@@ -1,11 +1,17 @@
 <template>
   <div id="home">
     <NavBar class="home-nav">
-      <template v-slot:left>
-        <div id="logo"></div>
-      </template>
       <template v-slot:center>
-        <input id="search" type="text" placeholder="牛仔裤" />
+        <i id="search-icon"></i>
+        <input
+          id="search"
+          type="text"
+          autocomplete="false"
+          placeholder="牛仔裤"
+        />
+      </template>
+      <template v-slot:right>
+        <div class="assign">登录</div>
       </template>
     </NavBar>
     <TabControl
@@ -183,13 +189,43 @@ export default {
 }
 
 .home-nav {
-  background-color: #fff;
+  background-color: var(--color-tint);
   /* 
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   z-index: 9; */
+}
+
+#search-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(https://st.360buyimg.com/so/images/search/jd-sprites.png?__inline=)
+    no-repeat;
+  background-position: -80px 0;
+  background-size: 200px;
+  margin: 8px 0 0 15px;
+  float: left;
+  position: absolute;
+  top: 7px;
+}
+
+#search {
+  width: 260px;
+  height: 30px;
+  background-color: #eee;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding-left: 30px;
+  font-size: 14px;
+  outline: none;
+}
+
+.assign {
+  color: #fff;
+  font-size: 14px;
 }
 
 .tab-control {
@@ -205,15 +241,6 @@ export default {
   background-repeat: no-repeat;
   background-size: 35px 35px;
   background-position: 10px center;
-}
-#search {
-  width: 260px;
-  height: 30px;
-  background-color: #eee;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding-left: 20px;
-  font-size: 14px;
 }
 
 .content {
