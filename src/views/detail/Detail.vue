@@ -54,7 +54,7 @@ import { debounce } from "common/utils";
 import { itemListenerMixin, backTopMixin } from "common/mixin";
 import { BACK_POSITION } from "common/const";
 
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Detail",
@@ -129,7 +129,7 @@ export default {
     }, 100);
   },
   methods: {
-    // ...mapActions(["addCart"]), //vuex
+    ...mapActions(["addCart"]),
     // imageLoad(){
     //   this.$refs.scroll.refresh();
     // }

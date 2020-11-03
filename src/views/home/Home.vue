@@ -11,7 +11,12 @@
         />
       </template>
       <template v-slot:right>
-        <div class="assign">登录</div>
+        <div class="assign">
+          <a
+            href="https://h5.mogu.com/user-process/account.html?ptp=32.qr95G.0.0.P8RItp8r&redirect_url=https%3A%2F%2Fh5.mogu.com%2Fpersonal-v2%2Findex.html%3Fptp%3D32.aabyWb.0.0.1GQgepBz"
+            >登录</a
+          >
+        </div>
       </template>
     </NavBar>
     <TabControl
@@ -223,7 +228,7 @@ export default {
   outline: none;
 }
 
-.assign {
+.assign a{
   color: #fff;
   font-size: 14px;
 }
