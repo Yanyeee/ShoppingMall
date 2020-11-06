@@ -220,8 +220,8 @@ export default {
 #search {
   width: 260px;
   height: 30px;
-  background-color: #eee;
-  border: 1px solid #eee;
+  background-color: #fff;
+  border: 1px solid #fff;
   border-radius: 5px;
   padding-left: 30px;
   font-size: 14px;

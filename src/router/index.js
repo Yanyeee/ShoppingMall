@@ -27,14 +27,14 @@ const routes = [{
   }, {
     path: '/profile',
     component: Profile
-  },{
+  }, {
     path: '/detail/:iid',
     component: Detail
   },
 ]
 const router = new VueRouter({
   routes,
-  mode: "history"
+  mode: "hash"
 })
 
 router.onError((error) => {
